@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sicredi_navigation"
+    app:startDestination="@id/eventListFragment">
+
+    <fragment
+        android:id="@+id/eventListFragment"
+        android:name="com.example.sicredi.view.EventListFragment"
+        android:label="Events List"
+        tools:layout="@layout/fragment_event_list">
+        <action
+            android:id="@+id/action_eventListFragment_to_eventDetailFragment"
+            app:destination="@id/eventDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDetailFragment"
+        android:name="com.example.sicredi.view.EventDetailFragment"
+        android:label="Event Details"
+        tools:layout="@layout/fragment_event_detail">
+        <action
+            android:id="@+id/ActionBackToList"
+            app:destination="@id/eventListFragment" />
+        <argument
+            android:name="eventId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+</navigation>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="event"
+            type="com.example.sicredi.model.Event" />
+        <variable
+            name="listener"
+            type="com.example.sicredi.view.EventClickListener" />
+        <variable
+            name="util"
+            type="com.example.sicredi.util.Util" />
+    </data>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eventLayout"
+        android:onClick="@{listener::onEventClicked}"
+        android:longClickable="true">
+
+        <TextView
+            android:id="@+id/eventId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@{String.valueOf(event.id)}"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:padding="4dp"
+            android:imageUrl="@{event.image}"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:layout_margin="10dp"
+            android:padding="4dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventTitle"
+                android:hint="@string/event_item_title"
+                android:maxLength="27"
+                android:text="@{event.title}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventprice"
+                android:hint="@string/event_item_price"
+                android:text="@{String.valueOf(event.price)}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventDate"
+                android:hint="@string/event_item_date"
+                android:text="@{String.valueOf(event.date)}" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

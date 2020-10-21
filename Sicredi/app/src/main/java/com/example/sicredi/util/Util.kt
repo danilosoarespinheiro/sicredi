@@ -1,13 +1,14 @@
 package com.example.sicredi.util
 
 import android.content.Context
+import android.text.format.DateFormat
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.sicredi.R
-import java.text.SimpleDateFormat
 import java.util.*
 
 class Util {
@@ -39,6 +40,25 @@ class Util {
             cpd.centerRadius = 50f
             cpd.start()
             return cpd
+        }
+
+        @BindingAdapter("android:price")
+        @JvmStatic
+        fun price(view: TextView, text: Double?) {
+            view.text = "R$ " + text.toString()
+        }
+
+        @BindingAdapter("android:convertLongToDate")
+        @JvmStatic
+        fun convertLongToDate(view: TextView, time: Long) {
+            view.text = convert(time)
+        }
+
+        fun convert(time: Long): String {
+            val calendar = Calendar.getInstance(Locale.ENGLISH)
+            calendar.timeInMillis = time * 1000L
+            return DateFormat.format("yyyy-MM-dd", calendar).toString()
+
         }
     }
 }
